@@ -1,64 +1,75 @@
 ﻿using checkout_kata_cl.Models;
 using System.ComponentModel;
+using System.Net.NetworkInformation;
 using System.Reflection;
 
 namespace checkout_kata_cl
 {
     public class Main
     {
-        private Checkout Checkout;
-        private Checkoutline Checkoutline;
+        private Checkout CheckOut;
+        private Checkoutline CheckoutLine;
         private OrderTally OrderTally;
-        private Products products;
-        private PricingRules rules;
+        private Products Products;
+        private PricingRules Rules;
 
         public Main()
         {
-            Checkout = new Checkout();
-            Checkoutline = new Checkoutline();
+            CheckOut = new Checkout();
+            CheckoutLine = new Checkoutline();
             OrderTally = new OrderTally();
-            products = new Products();
-            rules = new PricingRules();
+            Products = new Products();
+            Rules = new PricingRules();
         }
 
         public void addProduct(string sku, double unitprice)
         {
-            products.addProducts(sku, unitprice);
+            Products.addProducts(sku, unitprice);
         }
 
         public void addRule(string sku, int qty, double price)
         {
-            rules.addRule(sku, qty, price);
+            Rules.addRule(sku, qty, price);
         }
 
         public void addItem(string sku)
         {
-            Checkoutline.addItem(sku);
+            CheckoutLine.addItem(sku);
         }
 
         public double checkoutValue()
         {
-            Double checkoutValue = 0.00;
+            double checkoutValue = 0.00;
 
             try
             {
+                //get order quantities
+                var OrderQty = CheckoutLine.line
+                                .GroupBy(s => s._SKU)
+                                .Where(g => g.Count() > 1)
+                                .Select(g => new { _SKU = g.Key, Count = g.Count() });
 
-                //loop through items in basket
-                foreach (var item in Checkoutline.getlist())
+                //loop through skus and quantities, to determine value
+                foreach (var item in OrderQty)
                 {
+                    double rulePrice = 0.00;
+                    double unitPrice = Products.getSKUPricing(item._SKU);
 
-                    //add to tally list/array
+                    if (Rules.getRulePricing(item._SKU, item.Count) != null)
+                    {
+                        rulePrice = Rules.getRulePricing(item._SKU, item.Count);
+                    }
+                    else
+                    {
+                        rulePrice = (unitPrice * item.Count);
+                    }
 
-                    //work out quantities
-
-                    //work out costs
-
-                    //output total
-
-
-
-
+                    OrderTally.addItem(item._SKU, item.Count, unitPrice, rulePrice);
                 }
+
+                //output total
+                OrderTally.getTotal();
+
             }
             catch (Exception e)
             {
@@ -67,6 +78,11 @@ namespace checkout_kata_cl
             }
 
             return checkoutValue;
+        }
+
+        private static void findSKU(string sku)
+        {
+
         }
 
     }

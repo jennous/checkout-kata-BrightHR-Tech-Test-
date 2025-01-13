@@ -25,6 +25,16 @@ namespace checkout_kata_cl.Models
         {
             return SKUS;
         }
+
+        /// <summary>
+        /// return sku unit price
+        /// </summary>
+        /// <param name="sku"></param>
+        /// <returns></returns>
+        public double getSKUPricing(string sku)
+        {
+            return SKUS.Where(s => s._SKU == sku).Select(s => s._UnitPrice).FirstOrDefault();
+        }
     }
 
 

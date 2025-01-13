@@ -6,14 +6,30 @@ using System.Threading.Tasks;
 
 namespace checkout_kata_cl.Models
 {
-    public class OrderTally()
+    public class OrderTally : Order
+    {
+        public List<Order> Orders { get; set; }
+
+        public double getTotal()
+        {
+            return Orders.Sum(s => s._Total);
+        }
+    }
+
+    public class Order()
     {
         public string _SKU { get; set; }
         public int _Qty { get; set; }
         public double _UnitPrice { get; set; }
         public double _Total { get; set; }
 
-        public List<OrderTally> Orders { get; set; }
+        public void addItem(string sku, int qty, double price, double total)
+        {
+            _SKU = sku;
+            _Qty = qty;
+            _UnitPrice = price;
+            _Total = total;
+        }
     }
 
     public class Checkoutline : Checkout
@@ -23,11 +39,6 @@ namespace checkout_kata_cl.Models
         public Checkoutline() { 
         
             line = new List<Checkout>();
-        }
-
-        public IEnumerable<Checkout> getlist()
-        {
-            return line.AsEnumerable();
         }
     }
 
