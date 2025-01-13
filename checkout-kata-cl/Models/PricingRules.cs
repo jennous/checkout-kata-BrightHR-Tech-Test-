@@ -19,7 +19,6 @@ namespace checkout_kata_cl.Models
         public void addRule(string sku, int qty, double price)
         {
             Rules.Add(new PricingRule(sku,qty,price));
-
         }
 
         public List<PricingRule> getAllRules()
