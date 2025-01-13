@@ -1,33 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace checkout_kata_cl.Models
 {
-    public class PricingRules
+    public class PricingRules : PricingRule
     {
-        required
+        public List<PricingRule> Rules { get; set; }
+
+        public PricingRules()
+        {
+            Rules = new List<PricingRule>();
+        }
+
+        public void addRule(string sku, int qty, double price)
+        {
+            Rules.Add(new PricingRule(sku,qty,price));
+
+        }
+
+        public List<PricingRule> getAllRules()
+        {
+            return Rules;
+        }
+    }
+
+
+    public class PricingRule
+    {
         public string _SKU { get; set; }
-        required
         public int _Quantity { get; set; }
-        required
         public double _Price { get; set; }
 
-        public List<PricingRules> Rules { get; set; }
-
-        /// <summary>
-        /// Returns all pricing rules
-        /// </summary>
-        public PricingRules()
+        public PricingRule()
         {
 
         }
 
-        public List<PricingRules> getAllRules()
+        /// <summary>
+        /// add pricing rule
+        /// </summary>
+        public PricingRule(string sku, int qty, double price)
         {
-            return Rules;
+            _SKU = sku;
+            _Quantity = qty;
+            _Price = price;
         }
     }
 }

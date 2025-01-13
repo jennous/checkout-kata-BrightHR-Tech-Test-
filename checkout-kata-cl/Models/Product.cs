@@ -1,29 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace checkout_kata_cl.Models
 {
-    public class Product
+    public class Products : Product
     {
-        required
-        public string _SKU { get; set; }
-        required
-        public double _UnitPrice { get; set; }
+        public List<Product> SKUS { get; set; }
 
-        public List<Product> Products { get; set; }
+        public Products() { 
+        
+            SKUS = new List<Product>(); 
+        }
 
-        public Product() { }
+        public void addProducts(string prod, double price)
+        {
+            SKUS.Add(new Product(prod,price));
+        }
 
-        /// <summary>
-        /// Returns all products
-        /// </summary>
-        /// <returns></returns>
         public List<Product> getProducts()
         {
-            return Products;
+            return SKUS;
+        }
+    }
+
+
+    public class Product
+    {
+        public string _SKU { get; set; }
+        public double _UnitPrice { get; set; }
+
+        public Product()
+        {
+
+        }
+
+        /// <summary>
+        /// initlize class
+        /// </summary>
+        public Product(string sku, double unitprice) {
+            _SKU = sku;
+            _UnitPrice = unitprice;
         }
     }
 }
