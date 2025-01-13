@@ -13,19 +13,22 @@ namespace checkout_kata_cl.Models
         public double _UnitPrice { get; set; }
         public double _Total { get; set; }
 
-        public List<OrderTally> _Orders { get; set; }
+        public List<OrderTally> Orders { get; set; }
     }
 
     public class Checkoutline : Checkout
     {
-        private List<Checkout> line;
+        public List<Checkout> line;
 
         public Checkoutline() { 
         
             line = new List<Checkout>();
         }
 
-
+        public IEnumerable<Checkout> getlist()
+        {
+            return line.AsEnumerable();
+        }
     }
 
     public class Checkout

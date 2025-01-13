@@ -12,10 +12,11 @@ namespace checkout_kata_cl
         private Products products;
         private PricingRules rules;
 
-        public Main() { 
+        public Main()
+        {
             Checkout = new Checkout();
             Checkoutline = new Checkoutline();
-            OrderTally = new OrderTally(); 
+            OrderTally = new OrderTally();
             products = new Products();
             rules = new PricingRules();
         }
@@ -36,21 +37,33 @@ namespace checkout_kata_cl
         }
 
         public double checkoutValue()
-        {            
+        {
             Double checkoutValue = 0.00;
 
             try
             {
 
-            foreach (var item in Checkoutline) { 
-            
-            
-            
-            }
+                //loop through items in basket
+                foreach (var item in Checkoutline.getlist())
+                {
+
+                    //add to tally list/array
+
+                    //work out quantities
+
+                    //work out costs
+
+                    //output total
+
+
+
+
+                }
             }
             catch (Exception e)
-            { 
-            
+            {
+                //implement error handling -- out of scope
+                return checkoutValue;
             }
 
             return checkoutValue;
