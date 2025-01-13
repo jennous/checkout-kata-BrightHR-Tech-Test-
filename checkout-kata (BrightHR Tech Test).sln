@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout-kata-cl", "checkout-kata-cl\checkout-kata-cl.csproj", "{857B9EBB-E4E0-4974-AF34-7A7DF82F9393}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout-kata-ut", "checkout-kata-ut\checkout-kata-ut.csproj", "{878FB1A5-F724-4AA1-ADE6-9032B00A378B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout-kata-app", "checkout-kata-app\checkout-kata-app.csproj", "{3B8D4FCC-5A1B-4519-A5EA-2DDA306A52C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{857B9EBB-E4E0-4974-AF34-7A7DF82F9393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{857B9EBB-E4E0-4974-AF34-7A7DF82F9393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{857B9EBB-E4E0-4974-AF34-7A7DF82F9393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{878FB1A5-F724-4AA1-ADE6-9032B00A378B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{878FB1A5-F724-4AA1-ADE6-9032B00A378B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{878FB1A5-F724-4AA1-ADE6-9032B00A378B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{878FB1A5-F724-4AA1-ADE6-9032B00A378B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B8D4FCC-5A1B-4519-A5EA-2DDA306A52C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B8D4FCC-5A1B-4519-A5EA-2DDA306A52C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B8D4FCC-5A1B-4519-A5EA-2DDA306A52C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B8D4FCC-5A1B-4519-A5EA-2DDA306A52C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
