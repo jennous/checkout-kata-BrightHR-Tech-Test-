@@ -7,7 +7,6 @@ namespace checkout_kata_cl
 {
     public class Main
     {
-        private Checkout CheckOut;
         private Checkoutline CheckoutLine;
         private OrderTally OrderTally;
         private Products Products;
@@ -15,7 +14,6 @@ namespace checkout_kata_cl
 
         public Main()
         {
-            CheckOut = new Checkout();
             CheckoutLine = new Checkoutline();
             OrderTally = new OrderTally();
             Products = new Products();
@@ -79,11 +77,5 @@ namespace checkout_kata_cl
 
             return checkoutValue;
         }
-
-        private static void findSKU(string sku)
-        {
-
-        }
-
     }
 }
