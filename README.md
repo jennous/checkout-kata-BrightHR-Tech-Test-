@@ -1,0 +1,1 @@
+# checkout-kata (BrightHR Tech Test)
