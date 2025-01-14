@@ -40,6 +40,17 @@ namespace checkout_kata_cl
             return Products.getProducts();
         }
 
+        public List<PricingRule> getRules()
+        {
+            return Rules.getAllRules();
+        }
+
+        public List<Kata_Order> getOrders()
+        {
+            return OrderTally.GetOrders();
+        }
+
+
         public double checkoutValue()
         {
             double checkoutValue = 0.00;
@@ -58,7 +69,7 @@ namespace checkout_kata_cl
                     double rulePrice = 0.00;
                     double unitPrice = Products.getSKUPricing(item._SKU);
 
-                    if (Rules.getRulePricing(item._SKU, item.Count) != null)
+                    if (Rules.getRulePricing(item._SKU, item.Count) != 0)
                     {
                         rulePrice = Rules.getRulePricing(item._SKU, item.Count);
                     }
@@ -67,14 +78,14 @@ namespace checkout_kata_cl
                         rulePrice = (unitPrice * item.Count);
                     }
 
-                    OrderTally.addItem(item._SKU, item.Count, unitPrice, rulePrice);
+                    OrderTally.addToCart(item._SKU, item.Count, unitPrice, rulePrice);
                 }
 
                 //output total
-                OrderTally.getTotal();
+                checkoutValue = OrderTally.getTotal();
 
             }
-            catch (Exception e)
+            catch
             {
                 //implement error handling -- out of scope
                 return checkoutValue;

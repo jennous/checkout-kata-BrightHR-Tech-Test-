@@ -40,7 +40,7 @@ namespace checkout_kata_cl.Models
 
     public class Product
     {
-        public string _SKU { get; set; }
+        public string? _SKU { get; set; }
         public double _UnitPrice { get; set; }
 
         public Product()
