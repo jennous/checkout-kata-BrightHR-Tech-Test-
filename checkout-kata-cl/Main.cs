@@ -8,14 +8,14 @@ namespace checkout_kata_cl
     public class Main
     {
         private Checkoutline CheckoutLine;
-        private OrderTally OrderTally;
+        //private OrderTally OrderTally;
         private Products Products;
         private PricingRules Rules;
 
         public Main()
         {
             CheckoutLine = new Checkoutline();
-            OrderTally = new OrderTally();
+            //OrderTally = new OrderTally();
             Products = new Products();
             Rules = new PricingRules();
         }
@@ -45,10 +45,10 @@ namespace checkout_kata_cl
             return Rules.getAllRules();
         }
 
-        public List<Kata_Order> getOrders()
-        {
-            return OrderTally.GetOrders();
-        }
+        //public List<Kata_Order> getOrders()
+        //{
+        //    return OrderTally.GetOrders();
+        //}
 
 
         public double checkoutValue()
@@ -78,12 +78,8 @@ namespace checkout_kata_cl
                         rulePrice = (unitPrice * item.Count);
                     }
 
-                    OrderTally.addToCart(item._SKU, item.Count, unitPrice, rulePrice);
+                    checkoutValue += rulePrice;
                 }
-
-                //output total
-                checkoutValue = OrderTally.getTotal();
-
             }
             catch
             {
