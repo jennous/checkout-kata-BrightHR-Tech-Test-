@@ -28,7 +28,7 @@ namespace checkout_kata_cl.Models
 
         public double getRulePricing(string sku, int qty)
         {
-            return Rules.Where(s => s._SKU == sku && s._Quantity >= qty).Select(s => s._Price).FirstOrDefault();
+            return Rules.Where(s => s._SKU == sku && s._Quantity == qty).Select(s => s._Price).FirstOrDefault();
             // this will not work for multipliers...
         }
     }

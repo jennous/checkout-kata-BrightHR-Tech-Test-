@@ -8,14 +8,12 @@ namespace checkout_kata_cl
     public class Main
     {
         private Checkoutline CheckoutLine;
-        //private OrderTally OrderTally;
         private Products Products;
         private PricingRules Rules;
 
         public Main()
         {
             CheckoutLine = new Checkoutline();
-            //OrderTally = new OrderTally();
             Products = new Products();
             Rules = new PricingRules();
         }
@@ -45,10 +43,6 @@ namespace checkout_kata_cl
             return Rules.getAllRules();
         }
 
-        //public List<Kata_Order> getOrders()
-        //{
-        //    return OrderTally.GetOrders();
-        //}
 
 
         public double checkoutValue()
@@ -60,7 +54,7 @@ namespace checkout_kata_cl
                 //get order quantities
                 var OrderQty = CheckoutLine.line
                                 .GroupBy(s => s._SKU)
-                                .Where(g => g.Count() > 1)
+                                .Where(g => g.Count() > 0)
                                 .Select(g => new { _SKU = g.Key, Count = g.Count() });
 
                 //loop through skus and quantities, to determine value
