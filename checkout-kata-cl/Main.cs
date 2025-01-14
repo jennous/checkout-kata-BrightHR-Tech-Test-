@@ -35,6 +35,11 @@ namespace checkout_kata_cl
             CheckoutLine.addItem(sku);
         }
 
+        public List<Product> getProducts()
+        {
+            return Products.getProducts();
+        }
+
         public double checkoutValue()
         {
             double checkoutValue = 0.00;
